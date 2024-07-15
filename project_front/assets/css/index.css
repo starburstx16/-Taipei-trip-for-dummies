@@ -1,0 +1,499 @@
+/*主要區塊 */
+.maincontainer {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: flex-start; /* 將子元素在垂直方向上靠上對齊 */
+  flex-direction: column;
+  justify-content: flex-start; /* 將子元素在水平方向上靠左對齊 */
+}
+
+/*======================左邊查詢區塊====================== */
+.leftblock {
+  width: 1952px;
+  height: 3121px;
+  display: flex;
+  position: relative;
+  align-items: flex-start; /* 將子元素在垂直方向上靠上對齊 */
+  flex-shrink: 1;
+  justify-content: flex-start; /* 將子元素在水平方向上靠左對齊 */
+}
+
+/*======================分類條======================*/
+/*分類條的底*/
+.classifybase {
+  top: 180px;
+  left: 70px;
+  width: 60%;
+  height: 61px;
+  display: flex;
+  overflow: hidden;
+  /* position: relative; */
+  border-color: rgb(26, 25, 27);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4.5px;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+
+
+/*分類條的小框(所有，必比登，餐廳，伴手禮，甜點)*/
+.classifybox {
+  width: 145px;
+  height: 59px;
+  justify-content: center;
+  text-align: center;
+  line-height: 300%;
+  background-color: rgba(0, 0, 0, 0);
+  flex:1;
+  border-right: 1px solid rgb(26, 25, 27); /* 在每個 .classifybox 元素右側添加黑色垂直格線 */
+}
+
+.classifybox:last-child {
+  border-right: none; /* 移除最後一個 .classifybox 的右側格線 */
+}
+
+/* ======================搜尋欄======================= */
+/* 搜尋欄的底 */
+.search{
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative; 
+}
+
+/* 搜尋欄的框 */
+.search-bar {
+  top: 30px; /* 向下移動 20px */
+  left: 65px;
+  width: 70%;
+  max-width: 600px;
+  background-color: #fff; /* 改為白色背景 */
+  border: 1px solid #000; /* 添加黑色細線邊框 */
+  display: flex;
+  align-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 6px 12px;
+  /* position: absolute; 設置搜索框為絕對定位 */
+}
+
+/* 搜尋欄輸入的文字類型 */
+.search-bar input {
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+  line-height: 1;
+  font-size: 14px;
+  color: #0b0b0b;
+}
+
+/* 搜尋欄內"search"淺色的文字 */
+::placeholder{
+  color: #00000059;
+}
+
+/* 搜尋欄內放大鏡圖片的樣式 */
+.search-bar button img{
+  width: 20px;
+}
+
+/* 搜尋欄內button的設定*/
+.search-bar button{
+  border: 0;
+  border-radius: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+/* =====天氣====== */
+.nav__weather {
+  position: relative;
+  cursor: pointer;
+}
+/* 天氣圖標大小 */
+.nav__weather-icon {
+  width: 40px;
+  height: 40px;
+}
+/* 天氣面板設定 */
+.weather-panel {
+  display: flex;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 300px; /* 調整面板寬度 */
+  height: 330px; /* 調整面板高度 */
+  display: none;
+  z-index: 999;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#maxtemp { 
+  font-size: 30px; /* 設置水平文字的大小 */
+  writing-mode:horizontal-tb
+}
+
+#mintemp {
+  font-size: 30px; /* 設置水平文字的大小 */
+  writing-mode:horizontal-tb
+}
+
+.weather-panel-writing-mode {
+  writing-mode: vertical-rl;
+  text-align: center;
+  line-height: 3;
+}
+
+#weather-panel.show {
+  display: block; /* 顯示面板 */
+  opacity: 1; /* 完全不透明 */
+}
+
+
+.weather-panel h3 {
+  margin-top: 0;
+}
+
+.weather-panel-close {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* 面板內字形行距設定 */
+.table1{
+  display:flex;
+  justify-content:center;
+  font-size: 15px;
+  align-items:center;
+  line-height: 20px; 
+}
+
+/* personal-info setting */
+.personal_info {
+  position: relative;
+  display: flex;
+  justify-content: center; /* 在水平方向上居中對齊 */
+  align-items: center; /* 在垂直方向上居中對齊 */
+  column-gap: 35px; /* 調整 column-gap 的值來調整間距 */
+}
+
+/* 註冊 */
+/* 調整下拉選單的整體間距 */
+#location-select {
+  margin-top: 10px; /* 上間距 */
+  margin-bottom: 10px; /* 下間距 */
+  margin-left: 10px;
+}
+
+#location-select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* 調整下拉選單選項的樣式 */
+#location-select option {
+  padding: 10px; /* 上下內邊距 */
+  font-size: 16px; /* 字體大小 */
+}
+
+/* ========================================================================================== */
+/* login */
+#login-error {
+  background-color: rgb(237, 94, 94); 
+  color: white; 
+  border: 2px solid rgb(237, 94, 94); 
+  text-align: center; 
+  padding: 10px; 
+  margin: 10px auto; 
+  width: fit-content; 
+  display: none;
+
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+
+/* ============================= */
+
+.nav__user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.register-model {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: default;
+}
+
+.close-button {
+  float: right;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+h5 {
+  color: #060606;
+  text-align: center;
+}
+
+input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+form[action="/register"] input[type='text'] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #19b917; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.modal a {
+  color: #D12317;
+  text-decoration: none;
+}
+
+.marriage-options {
+  margin: 10px 0;
+}
+
+.Vegetarian-options {
+  margin: 10px 0;
+}
+
+.gender-options {
+  margin: 10px 0;
+}
+
+label {
+  margin-right: 15px; 
+  font-size: 16px;
+  cursor: default;
+}
+
+
+input[type="radio"] {
+  margin-right: 5px; 
+  cursor: pointer;
+}
+
+
+input[type="radio"]:focus {
+  outline: none; 
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px; 
+  width: 300px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+  font-size: 16px; 
+  border-radius: 8px;
+  transition: opacity 0.5s ease-in-out; 
+}
+
+
+.menu.active {
+  display: block;
+  opacity: 1; 
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu ul li a {
+  display: block;
+  padding: 12px 8px; 
+  text-decoration: none;
+  color: black;
+  font-weight: bold; 
+}
+
+.menu ul li a:hover {
+  background-color: #f0f0f0;
+  color: #333; 
+}
+
+
+
+/* TEST */
+:root {
+  --dl-color-gray-500: #595959;
+  --dl-color-gray-700: #999999;
+  --dl-color-gray-900: #D9D9D9;
+  --dl-size-size-large: 144px;
+  --dl-size-size-small: 48px;
+  --dl-color-danger-300: #A22020;
+  --dl-color-danger-500: #BF2626;
+  --dl-color-danger-700: #E14747;
+  --dl-color-gray-black: #000000;
+  --dl-color-gray-white: #FFFFFF;
+  --dl-size-size-medium: 96px;
+  --dl-size-size-xlarge: 192px;
+  --dl-size-size-xsmall: 16px;
+  --dl-space-space-unit: 16px;
+  --dl-color-primary-100: #003EB3;
+  --dl-color-primary-300: #0074F0;
+  --dl-color-primary-500: #14A9FF;
+  --dl-color-primary-700: #85DCFF;
+  --dl-color-success-300: #199033;
+  --dl-color-success-500: #32A94C;
+  --dl-color-success-700: #4CC366;
+  --dl-size-size-xxlarge: 288px;
+  --dl-size-size-maxwidth: 1400px;
+  --dl-radius-radius-round: 50%;
+  --dl-space-space-halfunit: 8px;
+  --dl-space-space-sixunits: 96px;
+  --dl-space-space-twounits: 32px;
+  --dl-radius-radius-radius2: 2px;
+  --dl-radius-radius-radius4: 4px;
+  --dl-radius-radius-radius8: 8px;
+  --dl-space-space-fiveunits: 80px;
+  --dl-space-space-fourunits: 64px;
+  --dl-space-space-threeunits: 48px;
+  --dl-space-space-oneandhalfunits: 24px;
+}
+/* 搜尋bar */
+
+.button_searchbar {
+  display: inline-block;
+  background-color: var(--first-color);
+  color: var(--white-color);
+  padding: 1rem 2rem;
+  font-weight: var(--font-semi-bold);
+  transition: .3s;
+}
+.button_searchbar:hover {
+  background-color: var(--first-color-alt);
+}
+/* ====================================================== */
+.button_search {
+  color: var(--dl-color-gray-black);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+.input {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  padding: 0.5rem 1rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+.textarea {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  padding: 0.5rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+.list {
+  width: 100%;
+  margin: 1em 0px 1em 0px;
+  display: block;
+  padding: 0px 0px 0px 1.5rem;
+  list-style-type: none;
+  list-style-position: outside;
+}
+.list-item {
+  display: list-item;
+}
+.teleport-show {
+  display: flex !important;
+  transform: none !important;
+}
+.Content {
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
+}
+.Heading {
+  font-size: 32px;
+  font-family: Inter;
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
+}

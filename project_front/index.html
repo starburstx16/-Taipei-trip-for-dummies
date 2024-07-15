@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- ADD CSS -->
+    <!-- <link rel="stylesheet" href="./style01.css" /> -->
+    <link rel="stylesheet" href="assets/css/index.css" />
+
+    <title>Taiwan Food Tour</title>
+</head>
+
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header_index" id="header_index">
+        <nav class="nav container">
+            <a href="/" class="nav__logo">Travel</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="/" class="nav__link active-link">主頁</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/foodpage" class="nav__link">美食</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/foodpage" class="nav__link">景點</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/foodpage" class="nav__link">住宿</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/foodpage" class="nav__link">交通</a>
+                    </li>
+                </ul>
+                <i class="ri-close-line nav__close" id="nav-close"></i>
+            </div>
+
+            <!--==================== 個人資訊區域 ====================-->
+            <div class="personal_info" id="personal_info">
+
+                <!--==================== 天氣 ====================-->
+                <div class="nav__weather" id="nav-weather">
+                    <img src="./assets/img/weather01.png" alt="Weather Icon" class="nav__weather-icon"
+                        id="weather-icon">
+                    <div class="weather-panel" id="weather-panel">
+                        <h3 id="area" style=text-align:center>台北市大安區天氣預報</h3>
+                        <div id="city" style=text-align:center>Current station</div>
+                        <div class="weather-panel-writing-mode">
+                            <div id="maxtemp" style=writing-mode:horizontal-tb>00</div>
+                            <div id="temp">最高溫 </div>
+                            <div id="mintemp" style=writing-mode:horizontal-tb>00</div>
+                            <div id="temp">最低溫 </div>
+                        </div>
+                        <div id="description" style=text-align:center>description</div>
+                        <br>
+
+                        <table class="table1">
+                            <tr>
+                                <th id="r1c1"></th>
+                                <th id="r1c2"></th>
+                                <th id="r1c3"></th>
+                                <th id="r1c4"></th>
+                            </tr>
+                            <tr>
+                                <th id="r2c1"></th>
+                                <th id="r2c2"></th>
+                                <th id="r2c3"></th>
+                                <th id="r2c4"></th>
+                            </tr>
+                            <tr>
+                                <th id="r3c1"></th>
+                                <th id="r3c2"></th>
+                                <th id="r3c3"></th>
+                                <th id="r3c4"></th>
+                            </tr>
+                            <tr>
+                                <th id="r4c1"></th>
+                                <th id="r4c2"></th>
+                                <th id="r4c3"></th>
+                                <th id="r4c4"></th>
+                            </tr>
+                            <tr>
+                                <th id="r5c1"></th>
+                                <th id="r5c2"></th>
+                                <th id="r5c3"></th>
+                                <th id="r5c4"></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+               <!--============= 使用者資訊 =========== -->
+                <div class="nav__user-avatar">
+                    <img src="assets/img/user.png" alt="User Avatar" id="avatar">
+                    <!-- 選單 -->
+                    <div id="menu" class="menu">
+                        <ul>
+                            {% if not logged_in %}
+                            <li><a href="#" onclick="showLoginForm()">登入 </a></li>
+                            <li><a href="#" onclick="showRegisterForm()">註冊</a></li>
+                            {% endif %}
+                            {% if logged_in %}
+                            <li><a href="/signout">登出</a></li>
+                            <li><a href="/checklike">我的最愛</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <!-- 登入表單 -->
+                    <div id="login-modal" class="modal" style="display:none;">
+                        <div class="modal-content">
+                            <span class="close-button">&times;</span>
+                            <h5>登入</h5>
+                            <form id="login-form" action="/login" method="POST">
+                                <input type="email" name="email" placeholder="電子郵件" required>
+                                <input type="password" name="password" placeholder="密碼" required>
+                                <p id="login-error">帳號密碼有誤，請重新輸入</p>
+                                <button type="submit" class="submit-btn">登入</button>
+                            </form>
+                            <p>還沒有帳戶？<a href="#" onclick="showRegisterForm()">註冊</a></p>
+                        </div>
+                    </div>
+                    <!-- 註冊表單 -->
+                    <div id="register-modal" class="register-model" style="display:none;">
+                        <div class="modal-content">
+                            <span class="close-button">&times;</span>
+                            <h5>註冊</h5>
+                            <form action="/register" method="POST">
+                                <input type="text" placeholder="姓名" pattern="[\u4E00-\u9FA5A-Za-z0-9]+" name="nickname"
+                                    title="請輸入僅包含字母、數字和中文的用戶名" required>
+                                <input type="email" placeholder="電子郵件" name="email" required>
+                                <input type="password" placeholder="密碼" name="password" required>
+                                <input type="text" placeholder="年齡" pattern="[0-9]*" title="請輸入數字" name="age" required>
+                                <!-- <input type="text" placeholder="居住地區 例:台北市" name="location" required> -->
+                                <labe>居住地區</labe>
+                                <select name="location" id="location-select" required>
+                                    <option value="" disabled selected>選擇居住地區</option>                                    
+                                    <option value="0">台北市</option>
+                                    <option value="0">新北市</option>
+                                    <option value="0">基隆市</option>
+                                    <option value="0">新竹市</option>
+                                    <option value="0">桃園市</option>
+                                    <option value="0">新竹縣</option>
+                                    <option value="0">宜蘭縣</option>
+                                    <option value="1">臺中市</option>
+                                    <option value="1">苗栗縣</option>
+                                    <option value="1">雲林縣</option>
+                                    <option value="1">彰化縣</option>
+                                    <option value="1">南投縣</option>
+                                    <option value="2">高雄市</option>
+                                    <option value="2">臺南市</option>
+                                    <option value="2">嘉義市</option>
+                                    <option value="2">屏東縣</option>
+                                    <option value="2">澎湖縣</option>
+                                    <option value="2">花蓮縣</option>
+                                    <option value="2">臺東縣</option>
+                                </select><br>
+
+
+                                
+                                <label>性別</label>
+                                <div class="gender-options">
+                                    <label>
+                                        <input type="radio" name="gender" value="0" required> 男
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="gender" value="1" required> 女
+                                    </label>
+                                </div>
+                                <label>飲食習慣</label>
+                                <div class="Vegetarian-options">
+                                    <label>
+                                        <input type="radio" name="vagetarian" value="0" required> 葷
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="vagetarian" value="1" required> 素
+                                    </label>
+                                </div>
+                                <label>婚姻狀況</label>
+                                <div class="marriage-options">
+                                    <label>
+                                        <input type="radio" name="marriage_status" value="0" required> 已婚
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="marriage_status" value="1" required> 未婚
+                                    </label>
+                                </div>
+                                <label>小孩數量</label>
+                                <input type="text" placeholder="若無請填入 0 " pattern="[0-9]*" title="請輸入數字"
+                                    name="num_family_member" required>
+                                <button type="submit" class="submit-btn">註冊</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home" id="home">
+            <img src="assets/img/taiwan_home.jpg" alt="" class="home__img">
+
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <span class="home__data-subtitle">Discover your place</span>
+                    <h1 class="home__data-title">Explore The <br> Best <b>Delicious <br> Foods</b></h1>
+                    <a href="/foodpage" class="button">Explore</a>
+                </div>
+
+                <div class="home__social">
+                    <a href="https://www.facebook.com/" target="_blank" class="home__social-link">
+                        <i class="ri-facebook-box-fill"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="home__social-link">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank" class="home__social-link">
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 推薦一 -->
+        <section class="about section" id="bib_gourmand">
+            <div class="about__container container grid">
+                <div class="about__data" id="discover_wrapper_1">
+                    <h2 class="section__title about__title">為您推薦 <br>台北 <b>美食</b> </h2>
+                    <p id="recommendation_desc_1" class="about__description">
+                        {% if not logged_in %}
+                        餐廳_1 <br>名稱、地址、星數
+                        {% endif %}
+                    </p>
+                    <a href="/foodpage" class="button">Explore more</a>
+                </div>
+                <div class="discover__container container swiper-container">
+                    <div id="discover_wrapper_1_photos" class="swiper-wrapper">
+                        {% if not logged_in %}
+                        <div class="discover__card swiper-slide">
+                            <img src="assets/img/taiwan_discover1.jpg" alt="" class="discover__img">
+                        </div>
+                        <div class="discover__card swiper-slide">
+                            <img src="assets/img/taiwan_discover2.jpg" alt="" class="discover__img">
+                        </div>
+                        <div class="discover__card swiper-slide">
+                            <img src="assets/img/taiwan_discover3.jpg" alt="" class="discover__img">
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 推薦二 -->
+        <section class="about section" id="bib_gourmand_2">
+            <div class="about__container container grid">
+                <div class="about__data" id="discover_wrapper_2">
+                    <h2 class="section__title about__title">為您推薦 <br>台北 <b>美食</b> </h2>
+                    <p id="recommendation_desc_2" class="about__description">
+                        {% if not logged_in %}
+                        餐廳_2 <br>名稱、地址、星數
+                        {% endif %}
+                    </p>
+                    <a href="/foodpage" class="button">Explore more</a>
+                </div>
+                <div class="discover__container container swiper-container">
+                    <div id="discover_wrapper_2_photos" class="swiper-wrapper">
+                        {% if not logged_in %}
+                        <div class="discover__card swiper-slide">
+                            <img src="assets/img/taiwan_discover1.jpg" alt="" class="discover__img">
+                        </div>
+                        <div class="discover__card swiper-slide">
+                            <img src="assets/img/taiwan_discover2.jpg" alt="" class="discover__img">
+                        </div>
+                        <div class="discover__card swiper-slide">
+                            <img src="assets/img/taiwan_discover3.jpg" alt="" class="discover__img">
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 推薦三 -->
+        <section class="about section" id="bib_gourmand_3">
+            <div class="about__container container grid">
+                <div class="about__data" id="discover_wrapper_3">
+                    <h2 class="section__title about__title">為您推薦 <br>台北 <b>美食</b> </h2>
+                    <p id="recommendation_desc_3" class="about__description">
+                        {% if not logged_in %}
+                        餐廳_3 <br>名稱、地址、星數
+                        {% endif %}
+                    </p>
+                    <a href="/foodpage" class="button">Explore more</a>
+                </div>
+                <div class="discover__container container swiper-container">
+                    <div id="discover_wrapper_3_photos" class="swiper-wrapper">
+                        {% if not logged_in %}
+                        <div class="discover__card swiper-slide">
+                            <img src="assets/img/taiwan_discover1.jpg" alt="" class="discover__img">
+                        </div>
+                        <div class="discover__card swiper-slide">
+                            <img src="assets/img/taiwan_discover2.jpg" alt="" class="discover__img">
+                        </div>
+                        <div class="discover__card swiper-slide">
+                            <img src="assets/img/taiwan_discover3.jpg" alt="" class="discover__img">
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+        <div class="footer__container container grid">
+            <div class="footer__content grid">
+                <div class="footer__data">
+                    <h3 class="footer__title">臺北旅遊網站</h3>
+                    <p class="footer__description">一站式打包<br>美食、景點、住宿和所在地天氣等資訊<br> 
+                    登入後再替您收藏您喜愛的餐廳!</p>
+                    <div>
+                        <a href="https://www.facebook.com/" target="_blank" class="footer__social">
+                            <i class="ri-facebook-box-fill"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="footer__social">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" class="footer__social">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="https://www.youtube.com/" target="_blank" class="footer__social">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">團隊成員</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">莊坤明</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">童欣婕</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">張聖霆</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">團隊成員</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">蔡子軒</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">黃思齊</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">李振齊</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">感謝您的聆聽</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">THANK'S</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- <div class="footer__rights">
+                <p class="footer__copy">&#169; 2021 Bedimcode. All rigths reserved.</p>
+                <div class="footer__terms">
+                    <a href="#" class="footer__terms-link">Terms & Agreements</a>
+                    <a href="#" class="footer__terms-link">Privacy Policy</a>
+                </div>
+            </div> -->
+        </div>
+    </footer>
+
+    <!--========== SCROLL UP ==========-->
+    <!-- <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line scrollup__icon"></i>
+    </a> -->
+
+    <!--=============== SCROLL REVEAL===============-->
+    <script src="assets/js/scrollreveal.min.js"></script>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="assets/js/main.js"></script>
+
+    <!-- WEATHER JS -->
+    <script src="assets/js/weather.js"></script>
+
+    <!-- LOGIN JS -->
+    <script src="assets/js/login.js"></script>
+
+    <!-- RECOMMENDATION JS -->
+    <script src="assets/js/recommendation.js"></script>
+
+</body>
+
+</html>
