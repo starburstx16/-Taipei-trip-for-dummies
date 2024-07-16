@@ -62,6 +62,33 @@
 
 ![image](https://github.com/starburstx16/-Taipei-trip-for-dummies/blob/README-description/sql_ER.png)
 
+## 登入系統&推薦餐廳
+
+**利用資料庫中使用者的個人資訊，當偵測使用者登入後，於首頁提供相關推薦餐廳圖片。**
+
+![image](https://github.com/starburstx16/-Taipei-trip-for-dummies/blob/README-description/%E7%99%BB%E5%85%A5%E8%88%87%E6%8E%A8%E8%96%A6.png)
+
+## 儲存喜好餐廳
+
+![image](https://github.com/starburstx16/-Taipei-trip-for-dummies/blob/README-description/%E5%84%B2%E5%AD%98%E9%A4%90%E5%BB%B3.png)
+
+## 我的最愛
+
+![image](https://github.com/starburstx16/-Taipei-trip-for-dummies/blob/README-description/%E6%88%91%E7%9A%84%E6%9C%80%E6%84%9B.png)
+
+## 示範影片
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
