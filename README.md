@@ -54,7 +54,7 @@
 
 **使用「年齡」、「婚姻狀況」、「小孩數量」和「性別」進行喜好餐廳預測訓練。**
 
-**決策樹預測準確度0.75~0.8**
+**決策樹預測準確度0.75~0.8。**
 
 ![image](https://github.com/starburstx16/-Taipei-trip-for-dummies/blob/README-description/%E6%B1%BA%E7%AD%96%E6%A8%B9.png)
 
