@@ -46,7 +46,7 @@
 
 ## 註冊系統
 
-**提供使用者註冊功能，將收集的個人資訊放入決策樹機器學習計算適合使用者的餐廳類別紀錄於資料庫並推薦相關餐廳**
+**提供使用者註冊功能，將收集的個人資訊放入決策樹機器學習計算適合使用者的餐廳類別紀錄於資料庫並推薦相關餐廳。**
 
 ![image](https://github.com/starburstx16/-Taipei-trip-for-dummies/blob/README-description/%E8%A8%BB%E5%86%8A%E7%B3%BB%E7%B5%B1.png)
 
